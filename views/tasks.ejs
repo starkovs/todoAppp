@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<body>
+  <%- include('./partials/header.ejs') %>
+  <div class="container">
+    <h1>Tasks</h1>
+<<<<<<< HEAD
+    <% if (tasks.length) { %>
+=======
+    <% if (tasks.length || typeof filterValue!='undefined') { %>
+      <form action="/tasks" method="post" name="PostFilter">
+        <div class="form-group mb-3">
+          <label for="filter">Filter by status</label>
+          <select onchange="PostFilter.submit()" class="form-control" name="filter">
+            <option value="all">All tasks</option>
+            <option 
+              <% if (typeof filterValue!='undefined' && filterValue=='In progress') {%>selected<% 
+              } %> 
+              value="In progress">In progress</option>
+            <option 
+              <% if (typeof filterValue!='undefined' && filterValue=='Done') {%>selected<% 
+              } %> 
+              value="Done">Done</option>
+          </select>
+        </div>
+      </form>
+>>>>>>> 0fd0e5d (Add existing project files to Git)
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Task</th>
+            <th scope="col">Status</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (tasks.length) { %>
+            <% tasks.forEach(({ id, text, status}) => { %>
+              <tr>
+                <td><%- text %></td>
+                <td><%- status %></td>
+                <% if (status=='In progress') { %>
+                  <td><a href="/done/<%= id %>"><i class="fa fa-check"></i></a></td>
+                <% } %>
+                <% if (status=='Done' ) { %>
+                  <td></td>
+                <% } %>
+                <td><a href="/tasks/<%= id %>"><i class="fa fa-bars"></i></a></td> 
+                <td><a href="/delete/<%= id %>"><i class="fa fa-trash"></i></a></td>
+              </tr>
+            <% }) %>
+          <% } %>
+        </tbody>
+      </table>
+    <% } %>
+<<<<<<< HEAD
+    <% if (!tasks.length) { %>
+=======
+    <% if (!tasks.length && typeof filterValue=='undefined') { %>
+>>>>>>> 0fd0e5d (Add existing project files to Git)
+    <div class="alert alert-warning" role="alert">
+      All tasks were finished! It's time to create a <a href="/add-task" class="alert-link">new task</a>.
+    </div>
+    <% } %>
+  </div>
+</body>
+</html>

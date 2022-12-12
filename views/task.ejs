@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+  <body>
+    <%- include('./partials/header.ejs') %>
+      <form action="/edit/<%= task.id %>" method="post">
+        <div class="row justify-content-center">
+          <div class="form-group col-md-4 col-md-offset-5 align-center ">
+            <h1>Task</h1>
+            <label>Text</label>
+            <input class="form-control mb-3" name="text" value="<%= task.text %>" rows="3" required>
+            <label>Status</label>
+            <select name="status" class="form-control mb-3">
+              <option name="inProgress">In progress</option>
+              <option name="done" <% if (task.status=='Done' ) { %>selected<% } %> >Done</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Update</button>
+          </div>
+        </div>
+      </form>
+  </body>
+</html>

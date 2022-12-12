@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+node_modules
+.env
+=======
+.DS_Store
+.env
+node_modules
+>>>>>>> 0fd0e5d (Add existing project files to Git)
