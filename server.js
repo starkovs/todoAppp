@@ -7,22 +7,13 @@ const fs = require('fs');
 const errorMsg = chalk.bgKeyword('white').redBright;
 const successMsg = chalk.bgKeyword('green').white;
 const taskRoutes = require('./routes/task-routes');
-<<<<<<< HEAD
-const createPath = require('./helpers/create-path');
-=======
 const taskApiRoutes = require('./routes/api-task-routes');
 const createPath = require('./helpers/create-path');
 var cookieParser = require('cookie-parser')
->>>>>>> 0fd0e5d (Add existing project files to Git)
 
 // .env file with configuration (db, port)
 require('dotenv').config();
 
-<<<<<<< HEAD
-// TODO sifrovani uzivatelskych dat
-
-=======
->>>>>>> 0fd0e5d (Add existing project files to Git)
 // connect to mongodb
 mongoose
   .connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true})
@@ -31,13 +22,6 @@ mongoose
 
 // ejs - for dynamic and partials
 app.set('view engine', 'ejs');
-<<<<<<< HEAD
-
-app.use(express.urlencoded({ extended: false }));
-
-app.use(taskRoutes);
-
-=======
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
@@ -53,7 +37,6 @@ app.use(taskRoutes);
 // });
 
 // error page
->>>>>>> 0fd0e5d (Add existing project files to Git)
 app.use((req, res) => {
   const title = 'Error';
   res
@@ -61,10 +44,7 @@ app.use((req, res) => {
     .render(createPath('error'), { title });
 });
 
-<<<<<<< HEAD
-=======
 // start server
->>>>>>> 0fd0e5d (Add existing project files to Git)
 app.listen(process.env.PORT, (error)=> {
   error ? console.log(errorMsg(error)) : console.log(successMsg(`Listening port ${process.env.PORT}`));
 });

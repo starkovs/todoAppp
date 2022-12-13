@@ -5,9 +5,6 @@
   <%- include('./partials/header.ejs') %>
   <div class="container">
     <h1>Tasks</h1>
-<<<<<<< HEAD
-    <% if (tasks.length) { %>
-=======
     <% if (tasks.length || typeof filterValue!='undefined') { %>
       <form action="/tasks" method="post" name="PostFilter">
         <div class="form-group mb-3">
@@ -25,7 +22,6 @@
           </select>
         </div>
       </form>
->>>>>>> 0fd0e5d (Add existing project files to Git)
       <table class="table">
         <thead>
           <tr>
@@ -56,11 +52,7 @@
         </tbody>
       </table>
     <% } %>
-<<<<<<< HEAD
-    <% if (!tasks.length) { %>
-=======
     <% if (!tasks.length && typeof filterValue=='undefined') { %>
->>>>>>> 0fd0e5d (Add existing project files to Git)
     <div class="alert alert-warning" role="alert">
       All tasks were finished! It's time to create a <a href="/add-task" class="alert-link">new task</a>.
     </div>

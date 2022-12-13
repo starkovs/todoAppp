@@ -1,12 +1,4 @@
 const Task = require('../models/task');
-<<<<<<< HEAD
-const createPath = require('../helpers/create-path');
-
-const getTasks = (req, res) => {
-  const title = 'Tasks';
-  Task 
-    .find()
-=======
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
@@ -28,22 +20,11 @@ const getTasks = (req, res) => {
   if (err) return res.render(createPath('error'), {title: 'Error'});
     Task 
     .find({author: user.username})
->>>>>>> 0fd0e5d (Add existing project files to Git)
     .sort({createdAt: -1})
     .then((tasks) => res.render(createPath('tasks'),{ tasks, title }))
     .catch((error) =>{
       console.log(errorMsg(error));
       res.render(createPath('error'), {title: 'Error'});
-<<<<<<< HEAD
-    });  
-};
-
-const getTask = (req, res) => {
-  const title = 'Task';
-  Task
-    .findById(req.params.id)
-    .then((task) => res.render(createPath('task'), { task, title }))
-=======
     }); 
   }); 
 };
@@ -60,15 +41,10 @@ const postTasks = (req, res) => {
     .where("status").equals(req.body.filter)
     .sort({createdAt: -1})
     .then((tasks) => res.render(createPath('tasks'),{ tasks, title, filterValue: req.body.filter }))
->>>>>>> 0fd0e5d (Add existing project files to Git)
     .catch((error) =>{
       console.log(errorMsg(error));
       res.render(createPath('error'), {title: 'Error'});
     }); 
-<<<<<<< HEAD
-};
-
-=======
   }); 
 };
 
@@ -92,7 +68,6 @@ const getTask = (req, res) => {
 };
 
 // update task status to 'Done'
->>>>>>> 0fd0e5d (Add existing project files to Git)
 const doneTask = (req, res) =>{
   const title = 'Done Task';
   Task
@@ -101,18 +76,11 @@ const doneTask = (req, res) =>{
        res.redirect('/tasks');
     })
     .catch((error) =>{
-<<<<<<< HEAD
-      console.log(errorMsg(error));
-=======
->>>>>>> 0fd0e5d (Add existing project files to Git)
       res.render(createPath('error'), {title: 'Error'});
     });
 };
 
-<<<<<<< HEAD
-=======
 // delete task
->>>>>>> 0fd0e5d (Add existing project files to Git)
 const deleteTask = (req, res) =>{
   const title = 'Task';
   Task
@@ -121,18 +89,11 @@ const deleteTask = (req, res) =>{
        res.redirect('/tasks');
     })
     .catch((error) =>{
-<<<<<<< HEAD
-      console.log(errorMsg(error));
-=======
->>>>>>> 0fd0e5d (Add existing project files to Git)
       res.render(createPath('error'), {title: 'Error'});
     }); 
 };
 
-<<<<<<< HEAD
-=======
 // show page for editing task
->>>>>>> 0fd0e5d (Add existing project files to Git)
 const updateTask = (req, res) =>{
   const title = 'Edit Task';
   const {text, status} = req.body;
@@ -142,28 +103,10 @@ const updateTask = (req, res) =>{
        res.redirect('/tasks');
     })
     .catch((error) =>{
-<<<<<<< HEAD
-      console.log(errorMsg(error));
-=======
->>>>>>> 0fd0e5d (Add existing project files to Git)
       res.render(createPath('error'), {title: 'Error'});
     });
 };
 
-<<<<<<< HEAD
-const addTask = (req, res) =>{
-  const {text} = req.body;
-  const task = new Task({text, status: 'In progress', author: 'starkov'});
-  task
-    .save()
-    .then((result) => res.redirect('/tasks'))
-    .catch((error) =>{
-      console.log(errorMsg(error));
-      res.render(createPath('error'), {title: 'Error'});
-    });
-};
-
-=======
 // add new task
 const addTask = (req, res) =>{
   const {text} = req.body;
@@ -179,14 +122,11 @@ const addTask = (req, res) =>{
 };
 
 // show page for adding a new task
->>>>>>> 0fd0e5d (Add existing project files to Git)
 const getAddTask = (req, res) => {
   const title = 'Tasks';
   res.render(createPath('add-task'),{ title });
 };
 
-<<<<<<< HEAD
-=======
 // get login
 const getUser = (req, res) => {
   res.clearCookie('token');
@@ -214,17 +154,10 @@ const postUser = async (req, res) => {
 };
 
 // export all functions
->>>>>>> 0fd0e5d (Add existing project files to Git)
 module.exports = {
   getTask, 
   doneTask,
   deleteTask,
-<<<<<<< HEAD
-  getTasks,
-  updateTask,
-  addTask,
-  getAddTask
-=======
   postTasks,
   getTasks,
   updateTask,
@@ -232,5 +165,4 @@ module.exports = {
   getAddTask,
   getUser,
   postUser
->>>>>>> 0fd0e5d (Add existing project files to Git)
 }
