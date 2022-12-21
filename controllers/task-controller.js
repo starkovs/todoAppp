@@ -2,6 +2,7 @@ const Task = require('../models/task');
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const validator = require("validator");
 const createPath = require('../helpers/create-path');
 
 // returns generated access token
@@ -96,7 +97,9 @@ const deleteTask = (req, res) =>{
 // show page for editing task
 const updateTask = (req, res) =>{
   const title = 'Edit Task';
-  const {text, status} = req.body;
+  var {text, status} = req.body;
+  var text = validator.escape(text);
+  var status = validator.escape(status);
   Task
     .findByIdAndUpdate(req.params.id, {text, status})
     .then((result) => {
@@ -109,7 +112,9 @@ const updateTask = (req, res) =>{
 
 // add new task
 const addTask = (req, res) =>{
-  const {text} = req.body;
+  // validator.escape(
+  var {text} = req.body;
+  var text = validator.escape(text);
   User.findById(req.userId).exec((err, user) => {
     const task = new Task({text, status: 'In progress', author: user.username});
     task
